@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Misael's Projects </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech';
+    margin: 0;
+    text-align: justify;
+}
+
+/* Style the header */
+.header {
+    padding: 100px;
+    text-align: center;
+    background-image: url("../imgs/vandp.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.paragraph-one {
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*chaning the color for links*/
+a:link {
+    color: #5AB8C4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #665AC4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #5A82C4;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Main column */
+.main {   
+    flex: 70%;
+    padding: 20px;
+}
+
+.intro{
+    margin-bottom: 15px;
+    background-color: Moccasin;    
+    padding: 15px;
+}
+
+.card{
+    background-color: IndianRed;
+
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width:100%;
+    }
+}
+
+
+</style>
+</head>
+
+<div class="header">
+    <h1>Bing && Bong</h1>
+    <p class="paragraph-one">Stand Clear for the Closing Doors Please!</p>
+</div>
+
+<div class="navbar">
+    <a href="index.html">Main page</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="Resume - Misael Marquez.pdf" download>Resume</a>
+    <a href="index.html#connect" class="right">Contact</a>
+</div>
+
+<div class = "intro">
+    <p>
+        During my senior year with the VCAT Robotics VEXU team, I helped design and build an autonomous robot capable of self-localization using odometry and adaptive autonomous routines. 
+        The robot could detect when a planned strategy wasn’t working and dynamically adjust its actions to recover and continue performing effectively.
+        Our team’s hard work paid off—we won Excellence Awards at every regional competition and at the World Championship. 
+        As the senior member with the most experience, I enjoyed mentoring teammates, empowering them to take ownership while keeping us highly competitive.
+    </p>
+    <p>
+        Technically, the robot evolved from an initial frame built with VEX c-channel to a refined structure incorporating 3D printed, CNC milled, and laser-cut parts, all designed in SolidWorks. 
+        The software was developed in C++ using VEX’s API.
+    </p>
+    <p>
+        Personally, this project taught me team leadership, complex algorithm design, and how to manage evolving hardware and software requirements in a competitive setting. 
+        I’d be happy to dive deeper into any aspect of this project—just ask!
+    </p>
+    <section class="section flex">
+        <div class="column">
+            <h2>Strategy</h2>
+            <ul>
+                <li>Created fallback logic for autonomous routines</li>
+                <li>Used odometry for self-localization and decision branches</li>
+                <li>Mentored younger team members on subsystem ownership</li>
+                <li>Balanced performance and teachability across the team</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Execution</h2>
+            <ul>
+                <li>Designed chassis and custom parts in SolidWorks</li>
+                <li>Started with VEX c-channel, migrated to CNC/3D printed parts</li>
+                <li>Programmed in C++ using VEX’s API with modular architecture</li>
+                <li>Tested adaptive routines under real match conditions</li>
+            </ul>
+        </div>
+    </section>
+</div>
+</body>
+</html>

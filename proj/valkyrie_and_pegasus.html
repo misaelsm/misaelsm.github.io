@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Misael's Projects </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech';
+    margin: 0;
+    text-align: justify;
+}
+
+/* Style the header */
+.header {
+    padding: 100px;
+    text-align: center;
+    background-image: url("../imgs/vandp.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.paragraph-one {
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*chaning the color for links*/
+a:link {
+    color: #5AB8C4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #665AC4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #5A82C4;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Main column */
+.main {   
+    flex: 70%;
+    padding: 20px;
+}
+
+.intro{
+    margin-bottom: 15px;
+    background-color: Moccasin;    
+    padding: 15px;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width:100%;
+    }
+}
+
+</style>
+</head>
+
+<div class="header">
+    <h1>Valkyrie && Pegasus</h1>
+    <p class="paragraph-one">The Crash Was the Plan</p>
+</div>
+
+<div class="navbar">
+    <a href="index.html">Main page</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="Resume - Misael Marquez.pdf" download>Resume</a>
+    <a href="index.html#connect" class="right">Contact</a>
+</div>
+
+<div class="intro">
+    <section class="section">
+        <p>
+            During my junior year, I worked on two separate robots: one built for durability and competition, and another streamlined for skill-based autonomous runs.
+        </p>
+        <p>
+            We leaned into the idea that sometimes a collision could be a calculated calibration — intentionally hitting known surfaces allowed us to localize without relying on perfect tuning.
+        </p>
+
+        <div style="font-family: monospace;">
+            Wall: |
+            <br>
+            Robot: uh..oh (crash!)
+            <br>
+            <button onclick="recalculate()">Recalculate Path</button>
+            <pre id="calcResult"></pre>
+        </div>
+
+        <script>
+            function recalculate() {
+                const result = document.getElementById("calcResult");
+                result.textContent = `Reset Current Position: (0, 0)\nCalculating new target...\nTarget: (300, 75)`;
+            }
+        </script>
+
+        <div class="twin-note">
+            <strong>Two robots:</strong> One overbuilt for gameplay, one re-engineered for speed and precision — both converged into a shared strategy.
+        </div>
+    </section>
+
+    <section class="section flex">
+        <div class="column">
+            <h2>Challenges</h2>
+            <ul>
+                <li>Remote work during COVID limited build access</li>
+                <li>Original design too heavy and rigid for solo skills</li>
+                <li>Needed a fast rebuild using 3D-printed components</li>
+            </ul>
+        </div>
+        <div class="column">
+            <h2>Solutions</h2>
+            <ul>
+                <li>Used wall collisions as calibration checkpoints</li>
+                <li>Split development into two robots: “Competition” and “Skills”</li>
+                <li>Reused modular code across both platforms</li>
+                <li>Improved SolidWorks workflows and print-optimized parts</li>
+            </ul>
+        </div>
+    </section>
+</main>

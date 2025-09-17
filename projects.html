@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Misael's Projects </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech';
+    margin: 0;
+    text-align: justify;
+}
+
+/* Style the header */
+.header {
+    padding: 100px;
+    text-align: center;
+    background-image: url("imgs/vandp.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.paragraph-one {
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*chaning the color for links*/
+a:link {
+    color: #5AB8C4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #665AC4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #5A82C4;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Main column */
+.main {   
+    flex: 70%;
+    padding: 20px;
+}
+
+.intro{
+    margin-bottom: 15px;
+    background-color: Moccasin;    
+    padding: 15px;
+}
+
+.card{
+    background-color: IndianRed;
+
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width:100%;
+    }
+}
+
+
+/* Grid layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front and Back */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Front: Just the image */
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Back: Description */
+.flip-card-back {
+  background-color: #222;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+</style>
+</head>
+
+<div class="header">
+    <h1>Breaking things until they eventually work</h1>
+    <p class="paragraph-one">Check out my undergrad, professional, and personal projects below!</p>
+</div>
+
+<div class="navbar">
+    <a href="index.html">Main page</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="Resume - Misael Marquez.pdf" download>Resume</a>
+    <a href="index.html#connect" class="right">Contact</a>
+</div>
+
+<div class="intro">
+    <div class="grid-container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/vandp.jpg" alt="vandp">
+                </div>
+                <div class="flip-card-back">
+                    <p>ROS2 Robot && Controller</p>
+                    <p>Built with DC motors, Arduinos, Raspberry Pis, and ROS2</p>
+                    <a href="ros2_robot_and_controller.html">See More</a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/vv.jpg" alt="vv">
+                </div>
+                <div class="flip-card-back">
+                    <p>Vaux Vision Compute</p>
+                    <a href="vv.html">See More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/moving_portal_3d_printer.jpg" alt="vv">
+                </div>
+                <div class="flip-card-back">
+                    <p>Moving Portal 3D Printer</p>
+                    <p>Made from a youtube concept, an ender 3, and a dream</p>
+                    <a href="moving_portal_3d_printer.html">See More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/SA.webp" alt="vv">
+                </div>
+                <div class="flip-card-back">
+                    <p>Vaux Smart Autonomy</p>
+                    <a href="SA.html">See More</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/bing_and_bong.jpg" alt="vv">
+                </div>
+                <div class="flip-card-back">
+                    <p>Bing && Bong</p>
+                    <p>Sweat, Delrin, and a whole load of Mountain Dew</p>
+                    <a href="bing_and_bong.html">See More</a>
+                </div>
+            </div>
+        </div>    
+        
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="imgs/valkyrie_and_pegasus.jpg" alt="vv">
+                </div>
+                <div class="flip-card-back">
+                    <p>Valkyrie && Pegasus</p>
+                    <p>Moving Blind with Efficiency</p>
+                    <a href="valkyrie_and_pegasus.html">See More</a>
+                </div>
+            </div>
+        </div> 
+    </div>
+    <p>
+        Have questions about any of the projects listed above? <a href="index.html#connect">Let's chat</a>!
+    </p>
+</div>
+</body>
+</html>

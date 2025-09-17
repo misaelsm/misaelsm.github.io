@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Misael's Projects </title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech';
+    margin: 0;
+    text-align: justify;
+}
+
+/* Style the header */
+.header {
+    padding: 100px;
+    text-align: center;
+    background-image: url("../imgs/vandp.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.header h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+.paragraph-one {
+    color: white;
+    text-shadow: 
+    -1px -1px 0 black,  
+    1px -1px 0 black,
+    -1px  1px 0 black,
+    1px  1px 0 black;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+    float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/*chaning the color for links*/
+a:link {
+    color: #5AB8C4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: #665AC4;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #5A82C4;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Main column */
+.main {   
+    flex: 70%;
+    padding: 20px;
+}
+
+.intro{
+    margin-bottom: 15px;
+    background-color: Moccasin;    
+    padding: 15px;
+}
+
+.card{
+    background-color: IndianRed;
+
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+    .row {   
+        flex-direction: column;
+    }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+    .navbar a {
+        float: none;
+        width:100%;
+    }
+}
+
+
+</style>
+</head>
+
+<div class="header">
+    <h1>ROS2 Learning Robot</h1>
+    <p class="paragraph-one">Learning by Wiring!</p>
+</div>
+
+<div class="navbar">
+    <a href="index.html">Main page</a>
+    <a href="projects.html">Projects</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="Resume - Misael Marquez.pdf" download>Resume</a>
+    <a href="index.html#connect" class="right">Contact</a>
+</div>
+
+<div class="intro">
+
+    <section class="section">
+        <p>
+            This robot is a personal development platform for learning ROS2 through hands-on experimentation with sensors, motion planning, and custom control systems.
+        </p>
+        <p>
+            Powered by a Milwaukee M18 battery, it integrates LiDAR, Raspberry Pi, Arduino Uno, and a custom controller. The system was designed without a final use-case in mind — and that became part of the challenge.
+        </p>
+    </section>
+
+    <div class="terminal">
+        <pre id="terminal-output"></pre>
+    </div>
+
+    <script>
+        const lines = [
+            "$ ros2 node list",
+            "/controller_node",
+            "/body_node",
+            "/cmd_vel_to_odom",
+            "/async_slam_toolbox_node",
+            "",
+            "$ ros2 topic echo /cmd_vel",
+            "linear: 0.0",
+            "angular: 0.3",
+            "linear: 0.0",
+            "angular: 0.0",
+            "linear: -0.2",
+            "angular: 0.0"
+        ];
+
+        const output = document.getElementById("terminal-output");
+        let i = 0;
+
+        function typeLine() {
+            if (i < lines.length) {
+                output.innerHTML += lines[i] + "\n";
+                i++;
+                setTimeout(typeLine, 500);
+            }
+        }
+
+        typeLine();
+    </script>
+
+    <style>
+        .terminal {
+            background: #1e1e1e;
+            color: #00ff90;
+            font-family: monospace;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+    </style>
+
+    <section class="section">
+        <h2>System Overview</h2>
+        <ul>
+            <li>ROS2 Jazzy running on Raspberry Pi</li>
+            <li>Arduino handles low-level PWM control</li>
+            <li>LiDAR for obstacle detection</li>
+            <li>M18 + M12 batteries power robot and controller</li>
+            <li>Touchscreen + joystick interface via secondary Pi</li>
+        </ul>
+    </section>
+
+</div>
+</body>
+</html>
