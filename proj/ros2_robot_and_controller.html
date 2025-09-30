@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+
 <style>
 
 * {
@@ -104,8 +105,32 @@ a:hover {
 
 .card{
     background-color: IndianRed;
-
 }
+
+.resized-img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure {
+text-align: center;
+}
+
+figure img {
+max-width: 100%;
+height: auto;
+}
+
+figcaption {
+font-size: 0.9em;
+color: #555;
+}
+
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
@@ -122,6 +147,43 @@ a:hover {
     }
 }
 
+hr{
+  --size: 8px;
+  border: 0;
+  height: var(--size);
+  background: IndianRed;
+  border-radius: 100vw;
+}
+
+.diff {
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      overflow-x: auto;
+}
+.diff-line {
+    padding: 4px 10px;
+    white-space: pre;
+}
+.added {
+    background-color: #dafbe1;
+    color: #24292f;
+}
+.removed {
+    background-color: #fddada;
+    color: #24292f;
+}
+.unchanged {
+    background-color: #f6f8fa;
+    color: #57606a;
+}
+
+pre code {
+      background-color: #f0f0f0 !important;
+      color: black !important;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+}
 
 </style>
 </head>
@@ -150,53 +212,6 @@ a:hover {
         </p>
     </section>
 
-    <div class="terminal">
-        <pre id="terminal-output"></pre>
-    </div>
-
-    <script>
-        const lines = [
-            "$ ros2 node list",
-            "/controller_node",
-            "/body_node",
-            "/cmd_vel_to_odom",
-            "/async_slam_toolbox_node",
-            "",
-            "$ ros2 topic echo /cmd_vel",
-            "linear: 0.0",
-            "angular: 0.3",
-            "linear: 0.0",
-            "angular: 0.0",
-            "linear: -0.2",
-            "angular: 0.0"
-        ];
-
-        const output = document.getElementById("terminal-output");
-        let i = 0;
-
-        function typeLine() {
-            if (i < lines.length) {
-                output.innerHTML += lines[i] + "\n";
-                i++;
-                setTimeout(typeLine, 500);
-            }
-        }
-
-        typeLine();
-    </script>
-
-    <style>
-        .terminal {
-            background: #1e1e1e;
-            color: #00ff90;
-            font-family: monospace;
-            padding: 1.5rem;
-            border-radius: 6px;
-            margin: 2rem 0;
-            overflow-x: auto;
-        }
-    </style>
-
     <section class="section">
         <h2>System Overview</h2>
         <ul>
@@ -208,6 +223,294 @@ a:hover {
         </ul>
     </section>
 
+    <nav id="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#init">Initial Design</a></li>
+            <li><a href="#ros2_fit">How ROS2 Fits in This Project</a></li>
+            <li><a href="#init_issues">Issues With the Initial Design</a></li>
+            <li><a href="#cmd_vel">Getting Things Moving with cmd_vel</a></li>
+        </ul>
+    </nav>
+
+
+    <hr>
+
+    <section class="section">
+        <h2>Why?</h2>
+        <p>
+            This was first brought up because of a game release video for a competitive robotics league known as Rival Robotics.
+            The video made me feel like I was back in my competitive robotics years and gave me enough motivation to make a robot.
+            The league allowed any hardware and any age.
+        </p>
+        <hr>
+
+        <h2 id="init">Initial Design</h2>
+        <h3>The Body</h3>
+        <p>
+            With very little experience in electronics beyond VEX, I set out to find the key components for my design.
+            Since I did not know what kind of overall design I wanted, I searched for items that could be used for prototyping. 
+            I settled on using Lego Technic sets.
+            For controllers, I had various arduino unos laying around and decided to stick with raspberry pis since I worked with them on my 3d printers.
+            TT motors were purchased from Amazon.
+            I had seen various videos on Youtube about home made mobile robots that used drill batteries as a power source.
+        </p>
+        <img src="../imgs/ros2_robot_init.jpg" alt="vv" class="resized-img">
+        <p>
+            Before including a raspberry pi, the robot was constructed with lego technic, tt motors, an arduino, and a L293D motor shield from HiLetgo.
+            Power came from a 5V power supply, spliced into power and ground leads into the shield.
+        </p>
+        <img src="../imgs/ros2_robot_init_with_battery.jpg" alt="vv" class="resized-img">
+        <p>
+            With more legos, I was able to include voltage converters and a Milwaukee M18 2AH battery. 
+        </p>
+        <img src="../imgs/ros2_robot_holo.jpg" alt="vv" class="resized-img">
+        <p>
+            Since the drivetrain was able to move without being tethered to the wall, the body was reborn into a holonomic drivetrain.
+            The omni wheels are remixed from "52mm Omni Wheel" by Armstrong_Manufacturing on Thingiverse.
+            The motors were placed above the wheels, and power was driven 1:1 with 3d printed gears.
+            The omni wheels and motors were placed together in a 3D printed pods.
+            Moreover, an RPLIDAR A1M8 was added with a raspberry pi 5. 
+        </p>
+        <p>
+            The raspberry pi 5 was used to run ROS2 on Ubuntu 24.04.
+            The pi and the arduino were attached via a USB cable and communicated through serial.
+            The arduino directly interfaces with the motors while the raspberry pi can focus on other processes.
+            Eventually, the arduino will interface with other sensors or actuators.
+        </p>
+        <h3> The controller </h2>
+        <img src="../imgs/ros2_controller_init_front.jpg" alt="vv" class="resized-img">
+        <p>
+            Like the body, the controller consisted of an arduino uno and a raspberry pi 5. 
+            The controller also consisted of two analog thumbsticks and two arrays of 4 push buttons.
+            The thumbsticks and buttons were connected directly to the arduino uno.
+            The pi and the arduino were attached via a USB cable and communicated through serial.
+            The arduino directly interfaces with the thumbsticks and push buttons since the Pi lacks a built-in ADC.
+        </p>
+        <img src="../imgs/ros2_controller_init_back.jpg" alt="vv" class="resized-img">
+    </section>
+
+    <section class="section">
+        <h2 id="ros2_fit">And now ... How ROS2 fits in this project</h2>
+
+        <div class="terminal">
+        <pre id="terminal-output"></pre>
+        </div>
+
+        <script>
+            const lines = [
+                "$ ros2 node list",
+                "/controller_node",
+                "/body_node",
+                "/cmd_vel_to_odom",
+                "/async_slam_toolbox_node",
+                "",
+                "$ ros2 topic echo /cmd_vel",
+                "linear:",
+                "   x: 0.0",
+                "   y: 0.3",
+                "   z: 0.0",
+                "angular:",
+                "   x: 0.0",
+                "   y: 0.0",
+                "   z: 0.5",
+            ];
+
+            const output = document.getElementById("terminal-output");
+            let i = 0;
+
+            function typeLine() {
+                if (i < lines.length) {
+                    output.innerHTML += lines[i] + "\n";
+                    i++;
+                    setTimeout(typeLine, 500);
+                }
+            }
+
+            typeLine();
+        </script>
+
+        <style>
+            .terminal {
+                background: #1e1e1e;
+                color: #00ff90;
+                font-family: monospace;
+                padding: 1.5rem;
+                border-radius: 6px;
+                margin: 2rem 0;
+                overflow-x: auto;
+            }
+        </style>
+        
+        <p>
+            ROS2 is used for cross communication between the raspberry pis on the body and controller.
+            They both run the ROS2 Jazzy distribution. 
+            The controller_node on the controller reads data that the arduino provides via serial.
+            The controller then publishes the information to the /body/input topic.
+            The robot subscribes to the /body/input topic.
+            The data is then parsed and sent to the arduino via serial.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2 id="init_issues">Issues With the Initial Design</h2>
+        There were a few problems with the robot and controller that did not necessarily need to get resolved but would help get things moving.
+        The following are problems with the robot.
+        <ol>
+            <li>TT motors created movement but were very slow or sometimes non-existent unless the arduino commanded full speed</li>
+            <li>Legos created a very mechanically flexible and brittle base</li>
+            <li>The wheels ran on lego shafts, causing friction</li>
+            <li>The raspberry pi could not power all devices on it's own</li>
+            <li>using SSH to learn directly on the robot can be difficult</li>
+        </ol>
+        Resolving these issues would require many hardware changes.
+        The following are the solutions applied to design the robot.
+        <ol>
+            <li>Greartisan 500RPM DC motors will be used to move the drivebase</li>
+            <li>The chassis will be 3D printed in an effort to reduce the part count</li>
+            <li>The wheels will only contact the robot through ball bearings</li>
+            <li>Items will be powered via a USB hub unless a direct connection is needed</li>
+            <li>a small screen will be added to view terminals, gazebo, and rviz</li>
+        </ol>
+        The following are problems with the controller.
+        <ol>
+            <li>there are many wires that can snag on items while in use</li>
+            <li>unused pins and contacts are in the open and could cause shorts</li>
+            <li>all components are attached to the controller with double sided tape</li>
+            <li>it is hard to prop up the controller to view the screen</li>
+        </ol>
+        Resolving these issues would require some hardware changes.
+        The following are the solutions applied to design the controller.
+        <ol>
+            <li>An enclosure will be used to cover up wires and open contacts</li>
+            <li>Whenever possible, small electronics will have their own enclosure so that items have a harder time causing shorts</li>
+            <li>all components will be mounted onto a base part</li>
+            <li>the enclosure will include a flat surface on the bottom</li>
+        </ol>
+        <p>
+            While the TT motors were good in getting an initial concept going, they were not good for the use case of this robot.
+            The movement was slow if any.
+            The greartisan DC motors are much stronger and are paired up with MDD13S DC motor controllers.
+            Since the motor controllers can pull up to 13A and control an individual motor, The motor count was reduced to two.
+            This meant that the holonomic drivetrain was replaced with a skid steer drivetrain.
+            While this goes against the initial concept of the robot for the game, this will allow myself to use this to learn ROS2 on.
+        </p>
+        <p>
+            The legos had so many connection points that even the slightest movement across many connections can cause the robot to sag.
+            The 3d printed chassis aimed to reduce the connection points, thus removing much of the slight movements.
+            Moreover, this also meant that all components would have to be fixed in place.
+            This aids components like the battery and LiDAR as the battery would not cause flexing, and movments would not cause the lidar to vibrate in place.
+            This trade off is taken with the idea that this chassis would be used for learning.
+        </p>
+        <p>
+            The wheels are 3d printed and originally ran on lego shafts which caused friction while moving.
+            With the eventual goal of increasing weight on the robot by adding more actuators, the wheels are to be designed to spin on bearings.
+            This was done by creating an extrusion on the ends of the wheels that would fit perfectly inside of bearings.
+            The extrusion is printed vertically using an FDM 3D printer which would make the layer lines the weakest part under load.
+            A screw threading on both sides of the wheel prevents shear forces due to the robot weight from destroying the wheel.
+        </p>
+        <p>
+            The raspberry pi had to communicate with the arduino uno, lidar, camera, and screen.
+            The pi can not supply enough current to all devices at once.
+            A usb hub is added to supply power to devices while allowing communication with the Raspberry Pi.
+            The arduino receives power and communication directly from the Raspberry Pi 5.
+            All other devices go through the usb hub.
+        </p>
+        <img src="../imgs/ros2_robot_v2_front.jpg" alt="Looking at the Front Right Corner of the V2 Robot" class="resized-img">
+        <br>
+        <img src="../imgs/ros2_robot_v2_back.jpg" alt="Looking at the Back Left Corner of the V2 Robot" class="resized-img">
+        <p>
+            When using the controller on a workbench, items such as screwdrivers or table corners can catch on wires and unplug them or even cause a quick short.
+            These weaknesses are addressed by creating cable management locations and a cover.
+            This also prevents fingers from touching contacts, wires, or other electrical components.
+            The arduino nano will receive power and communication through its usb port with the raspberry pi.
+            All other components are bolted on or ziptied to the controller base part.
+            The outer enclosure not only provides protections to parts on the inside, it also provides a clean and flat surface that can be used to prop up the controller.
+        </p>
+        <img src="../imgs/ros2_controller_v2_front.jpg" alt="Front View of the V2 Controller" class="resized-img">
+        <br>
+        <img src="../imgs/ros2_controller_v2_back.jpg" alt="Back View of the V2 Controller" class="resized-img">
+    </section>
+    <hr>
+    <section>
+    <h2 id="cmd_vel">Getting things moving with cmd_vel</h2>
+    <p>
+        One thing that makes ROS2 great for development is its standardization and modularity. 
+        To take full advantage of this, the nodes running on the controller and robot were rewritten to send and receive commands via the cmd_vel topic.
+        This will allow me to use the same controller to tele-operate other robots with the same inputs.
+        This also allows me to use community packages for autonomous movement of the robot.
+    </p>
+
+    <div class="diff">
+        <div class="unchanged diff-line">   self.subscription = self.create_subscription(</div>
+        <div class="removed diff-line">-     String,</div>
+        <div class="removed diff-line">-     '/body/input',</div>
+        <div class="added diff-line">+     Twist</div>
+        <div class="added diff-line">+     /cmd_vel</div>
+        <div class="unchanged diff-line">       self.listener_callback,</div>
+        <div class="unchanged diff-line">       10</div>
+        <div class="unchanged diff-line">   )</div>
+    </div>
+
+    <p>
+        I created a function that took the joystick inputs and parsed it for use in /cmd_vel topic.
+        The function was made to contain the conversion code and clean up the function that reads serial data.
+    </p>
+    <pre><code class="language-python">
+    def joystick_to_cmd_vel(self, i):
+        # define limits
+        max_linear = 1.36     # m/s
+        max_angular = 10.7    # rad/s
+        min_stick = 0
+        max_stick = 1024
+
+
+        # Convert input strings to floats
+        i = list(map(float, i))
+
+        # Adjust center
+        i[0] -= (min_stick + max_stick) / 2  # rotation
+        i[1] -= (min_stick + max_stick) / 2  # forward/backward
+
+        # Scale
+        angular_z = (i[0] / ((max_stick - min_stick) / 2)) * max_angular
+        linear_x = (i[1] / ((max_stick - min_stick) / 2)) * max_linear
+
+        return [angular_z, linear_x]
+    </code></pre>
+    <p>
+        Similarly, I created a function that took the /cmd_vel topic and converted it into motor commands to the arduino.
+        This function previously took inputs i and j, where they represented the raw inputs from the joysticks.
+        The mixing was the summation or subtraction of the two sticks being applied to each individual wheel.
+        While the robot moves based on joystick inputs, this new function has not been completely verified that the robot moves at the commanded speeds.
+    </p>
+    <pre><code class="language-python">
+    def cmd_vel_to_motors(self, i):
+        # assign values
+        linear_x = i.linear.x
+        angular_z = i.angular.z
+
+        max_linear = 1.36
+        max_angular = 10.7
+
+        #scaling
+        forward = (linear_x/max_linear) * 512
+        rotation = (angular_z/max_angular) * 512
+
+        # Mixing for skidsteer
+        rightMotor = forward - rotation
+        leftMotor = forward + rotation
+
+        motors = [rightMotor, leftMotor, 0, 0]
+
+        # Re-center to 0–1023 for Arduino, then clip
+        return [int(max(0, min(1023, m + 512))) for m in motors]
+    </code><pre>
+    </section>
+    <!-- <figure>
+        <img src="design.jpg" alt="Schematic">
+        <figcaption>Figure 2: Final schematic diagram</figcaption>
+    </figure> -->
 </div>
 </body>
 </html>
