@@ -1,208 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Misael's Projects </title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
-
-<style>
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Share Tech';
-    margin: 0;
-    text-align: justify;
-}
-
-/* Style the header */
-.header {
-    padding: 100px;
-    text-align: center;
-    background-image: url("../imgs/vandp.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
-.header h1 {
-    font-size: 40px;
-    color: white;
-    text-shadow: 
-    -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px  1px 0 black,
-    1px  1px 0 black;
-}
-
-.paragraph-one {
-    color: white;
-    text-shadow: 
-    -1px -1px 0 black,  
-    1px -1px 0 black,
-    -1px  1px 0 black,
-    1px  1px 0 black;
-}
-
-/* Style the top navigation bar */
-.navbar {
-    overflow: hidden;
-    background-color: #333;
-}
-
-/* Style the navigation bar links */
-.navbar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
-}
-
-/* Right-aligned link */
-.navbar a.right {
-    float: right;
-}
-
-/* Change color on hover */
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/*chaning the color for links*/
-a:link {
-    color: #5AB8C4;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:visited {
-    color: #665AC4;
-    background-color: transparent;
-    text-decoration: none;
-}
-a:hover {
-    color: #5A82C4;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
-/* Main column */
-.main {   
-    flex: 70%;
-    padding: 20px;
-}
-
-.intro{
-    margin-bottom: 15px;
-    background-color: Moccasin;    
-    padding: 15px;
-}
-
-.card{
-    background-color: IndianRed;
-}
-
-.resized-img {
-    max-width: 600px;
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-figure {
-text-align: center;
-}
-
-figure img {
-max-width: 100%;
-height: auto;
-}
-
-figcaption {
-font-size: 0.9em;
-color: #555;
-}
-
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-    .row {   
-        flex-direction: column;
-    }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-    .navbar a {
-        float: none;
-        width:100%;
-    }
-}
-
-hr{
-  --size: 8px;
-  border: 0;
-  height: var(--size);
-  background: IndianRed;
-  border-radius: 100vw;
-}
-
-.diff {
-      border: 1px solid #d0d7de;
-      border-radius: 6px;
-      overflow-x: auto;
-}
-.diff-line {
-    padding: 4px 10px;
-    white-space: pre;
-}
-.added {
-    background-color: #dafbe1;
-    color: #24292f;
-}
-.removed {
-    background-color: #fddada;
-    color: #24292f;
-}
-.unchanged {
-    background-color: #f6f8fa;
-    color: #57606a;
-}
-
-pre code {
-      background-color: #f0f0f0 !important;
-      color: black !important;
-      display: block;
-      padding: 10px;
-      border-radius: 5px;
-}
-
-</style>
+    <title>Misael's Projects </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../templates/temp.css" />
 </head>
 
-<div class="header">
-    <h1>ROS2 Learning Robot</h1>
-    <p class="paragraph-one">Learning by Wiring!</p>
-</div>
+<body class="projects-page">
 
-<div class="navbar">
-    <a href="../index.html">Main page</a>
-    <a href="../projects.html">Projects</a>
-    <a href="../experiences.html">Experiences</a>
-    <a href="../Resume - Misael Marquez.pdf" download>Resume</a>
-    <a href="../index.html#connect" class="right">Contact</a>
-</div>
+<div class="layout">
+    <nav class="sidebar">
+        <h2>ROS2 Learning Robot</h2>
+        <p>Learning by Wiring!</p>
+        <ul class="nav-links">
+            <li><a href="../index.html">Main page</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../experiences.html">Experiences</a></li>
+        </ul>
+    </nav>
 
-<div class="intro">
 
+
+
+
+<section class="project-content">
     <section class="section">
         <p>
             This robot is a personal development platform for learning ROS2 through hands-on experimentation with sensors, motion planning, and custom control systems.
@@ -431,6 +254,7 @@ pre code {
         <br>
         <img src="../imgs/ros2_controller_v2_back.jpg" alt="Back View of the V2 Controller" class="resized-img">
     </section>
+    <br>
     <hr>
     <section>
     <h2 id="cmd_vel">Getting things moving with cmd_vel</h2>

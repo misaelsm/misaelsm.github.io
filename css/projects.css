@@ -1,0 +1,325 @@
+/* =========================
+   GLOBAL STYLES
+   ========================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Share Tech', monospace;
+    margin: 0;
+    text-align: justify;
+    background-color: black;
+    color: white;
+}
+
+/* =========================
+   LAYOUT
+   ========================= */
+.layout {
+    display: flex;
+    width: 100%;
+}
+
+/* -------------------------
+   Sidebar
+   ------------------------- */
+.sidebar {
+    width: 300px;
+    background: #6c685e; /* restored moccasin background */
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    color: white; /* text on moccasin */
+}
+
+.sidebar p, .sidebar .paragraph-one {
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: darkmagenta;
+}
+
+.sidebar h2{
+    padding: 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1b1412, #35170c);
+    border: 2px solid #957a58; /* bronze */
+    box-shadow: 
+    0 0 15px #4e2d16,           /* dark copper glow */
+    inset 0 0 25px #1b1412;     /* deep cyber-shadow */
+    color: #e8d8c3; /* warm light text for contrast */
+    text-shadow: 0 0 8px #4e2d16;
+}
+
+.sidebar-section p,
+.sidebar-section ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+.sidebar-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sidebar-section a {
+    color: darkmagenta;
+    text-decoration: none;
+}
+
+.sidebar-section a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(#333, #333) padding-box,
+                linear-gradient(90deg, white, grey, white) border-box;
+    border: 3px solid transparent;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    border-color: darkmagenta;
+}
+
+/* Sidebar Divider */
+.sidebar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to left, black, darkmagenta, moccasin);
+    box-shadow: 0 0 12px darkmagenta, 0 0 20px black;
+}
+
+/* -------------------------
+   Carousel Container
+   ------------------------- */
+.carousel-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    overflow: hidden;
+    position: relative;
+    /* background-color: #957a58; */
+    padding: 60px;
+    background: linear-gradient(to bottom, 
+        black 0%, 
+        #35170c 50%,
+        black 100%
+    );
+}
+
+/* Carousel 3D */
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s, transform 0.6s;
+}
+
+.card.active {
+    opacity: 1;
+    transform: scale(1.15) translateZ(50px);
+    z-index: 10;
+    pointer-events: auto;
+    /* Darkmagenta glow for active card */
+    box-shadow: 0 0 20px darkmagenta, 0 0 40px darkmagenta inset;
+    border-radius: 10px;
+}
+
+.card.near {
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Card Inner Flip */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card Back with white text & gold link */
+.card-back {
+    background: #222;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    border-radius: 10px;
+}
+
+.card-back a {
+    margin-top: 10px;
+    color: gold;
+    text-decoration: none;
+}
+
+.card-back a:hover {
+    text-decoration: underline;
+}
+
+/* Only active card flips on hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+    .card.active:hover .card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* -------------------------
+   Carousel Controls
+   ------------------------- */
+.carousel-controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.carousel-controls button {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.carousel-controls button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 800px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .carousel-container {
+        padding: 30px 15px;
+    }
+
+    .carousel {
+        width: 220px;
+        height: 150px;
+    }
+
+    .card.active {
+        transform: scale(1.05) translateZ(30px);
+    }
+
+    .card.near {
+        opacity: 0.4;
+    }
+
+    .carousel-controls button {
+        font-size: 1.5rem;
+        padding: 5px 15px;
+    }
+}
+
+/* =========================
+   MOBILE TAP TO FLIP
+   ========================= */
+@media (hover: none) and (pointer: coarse) {
+    .card.active .card-inner {
+        cursor: pointer;
+    }
+}
