@@ -1,0 +1,301 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+957a58
+574c40
+71858c
+6c685e
+4e2d16
+1b1412
+373o2a
+3517oc
+*/
+
+body {
+    font-family: 'Share Tech', monospace;
+    margin: 0;
+    text-align: justify;
+    background-color: black;
+    color: white;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  min-height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    background: #6c685e; /* restored moccasin background */
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    color: white; /* text on moccasin */
+}
+
+.sidebar p, .sidebar .paragraph-one {
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.sidebar-section {
+    margin-bottom: 30px;
+}
+
+.sidebar-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: darkmagenta;
+}
+
+.sidebar-header h1 {
+font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: darkmagenta;
+}
+
+.sidebar h2{
+    padding: 25px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1b1412, #35170c);
+    border: 2px solid #957a58; /* bronze */
+    box-shadow: 
+    0 0 15px #4e2d16,           /* dark copper glow */
+    inset 0 0 25px #1b1412;     /* deep cyber-shadow */
+    color: #e8d8c3; /* warm light text for contrast */
+    text-shadow: 0 0 8px #4e2d16;
+}
+
+.sidebar-intro p {
+  margin-bottom: 25px;
+}
+
+.sidebar-section p,
+.sidebar-section ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+.sidebar-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.sidebar-section a {
+    color: darkmagenta;
+    text-decoration: none;
+}
+
+.sidebar-section a:hover {
+    text-decoration: underline;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    background: linear-gradient(#333, #333) padding-box,
+                linear-gradient(90deg, white, grey, white) border-box;
+    border: 3px solid transparent;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    border-color: darkmagenta;
+}
+
+/* Sidebar Divider */
+.sidebar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(to left, black, darkmagenta, moccasin);
+    box-shadow: 0 0 12px darkmagenta, 0 0 20px black;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Main content */
+.project-content {
+  flex: 70%;
+  padding: 20px;
+}
+
+.project-content h1 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.project-content h2 {
+  color: darkmagenta;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.project-content p {
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.project-content ul, ol {
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+.project-content li {
+  margin-bottom: 8px;
+}
+
+/* Project images */
+.project-images {
+  margin-bottom: 30px;
+}
+
+.project-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 2px solid darkmagenta; /* subtle complement to rolodex */
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+}
+
+/* Back button */
+.view-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: gold;
+  color: black;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.view-btn:hover {
+  transform: scale(1.05);
+}
+
+.resized-img {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+figure {
+text-align: center;
+}
+
+figure img {
+max-width: 100%;
+height: auto;
+}
+
+figcaption {
+font-size: 0.9em;
+color: #555;
+}
+
+hr{
+  --size: 8px;
+  border: 0;
+  height: var(--size);
+  background: white;
+  border-radius: 100vw;
+}
+
+.diff {
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      overflow-x: auto;
+}
+.diff-line {
+    padding: 4px 10px;
+    white-space: pre;
+}
+.added {
+    background-color: #dafbe1;
+    color: #24292f;
+}
+.removed {
+    background-color: #fddada;
+    color: #24292f;
+}
+.unchanged {
+    background-color: #f6f8fa;
+    color: #57606a;
+}
+
+pre code {
+      background-color: #f0f0f0 !important;
+      color: black !important;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+}
+
+
+/* Responsive */
+@media (max-width: 800px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .project-content {
+    padding: 30px 15px;
+  }
+
+  .project-card {
+    max-width: 100%;
+  }
+}

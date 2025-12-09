@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Misael's Projects </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/individual_project_page.css" />
+    </head>
+
+    <body class="projects-page">
+        <div class="layout">
+            <nav class="sidebar">
+                <h2>Automated Plant Watering System</h2>
+                <p>Mixing Silver and Green</p>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Main page</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../experiences.html">Experiences</a></li>
+                </ul>
+            </nav>
+
+            <section class="project-content">
+                <section class="section">
+                    <p>
+                        An automatic plant watering system with a singular controller for multiple plants using an amazon arduino watering kit and 3d prints.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2>System Overview</h2>
+                    <ul>
+                        <li>Arduinos, Sensors, Electronics</li>
+                        <li>3D printed casings</li>
+                        <li>IOT</li>
+                    </ul>
+                </section>
+
+                <nav id="table-of-contents">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#V1">V1</a></li>
+                        <li><a href="#V2">V2</a></li>
+                        <li><a href="#V3">CODE</a></li>
+                        <li><a href="#FIN">FIN</a></li>
+                    </ul>
+                </nav>
+
+                <hr>
+
+                <section class="section">
+                    <h2>Why?</h2>
+                    <p>
+                        Neighbors or freinds were asked to watch over my plants while traveling or on vacation.
+                        The plant watering schedule was different for both plants, which requried multiple entries and waterings.
+                        However, both plants had the same pot size.
+                    </p>
+                    <hr>
+
+                    <h2 id="V1">V1</h2>
+                    <p>
+                    An automated plant watering kit using arduinos was purchased from amazon.
+                    The idea was to use the sensors, pumps, and electronics from the kit to make a modular system.
+                    The system included one singular brain and X pods.
+                    The brain would be used for power distribution and for IO control.
+                    The system should be able to grow alongside the plant collection.
+                    </p>
+                    <h3>The Brain</h3>
+                    <br>
+                    <p>
+                        The brain box is the box that held the arduino and relays, as they should not be near water.
+                        The kit contains relays, pumps, and capacitive sensors.
+                        These were initially all wired together with the arduino to figure out how the system functions, and how to better modularize it.
+                        With each pod having it's own capacitive sensor and pump, the connection between the pods and brain can be uniform.
+                        Since the previous project was a 3D printer, four 6-pin male JST connectors are given to the brain. 
+                        Each connector can have power and ground for the dc pump, and power, ground, and signal for the capacitive sensor.
+                        Power was split from a arduino power supply into both the arduino and some 1:5 pin connectors for the relay.
+                        The arduino sent out all of the logic signals to the relay to turn on the relays and make the dc pumps run.
+                        logic voltage was also given to the relay using the 1:5 pin connectors.
+                        The housing was 3d printed out of ABS and PLA for the sake of using what was already on the printers.
+                        The arduino and relay were meant to be mounted on vertical panels that could slide in and out of the housing for easy maintenance.
+                        There were four holes on the mounting meant for the four 6-pin male JST connectors.
+                    </p>
+                    <img src="../imgs/automatic_plant_watering_system_v1.jpg" alt="V1" class="resized-img">
+
+                    <h3>The Pods</h2>
+                    <p>
+                        The system is meant to have multiple pods that each maintained a plant.
+                        Each pod was given a capacitive sensor to monitor each plant's hydration level, and a dc pump such that the plant can be hydrated appropriately.
+                        At the bottom of the pod exists a water reservoir where the pump lives. 
+                        The pump moves the water up into the plant when needed. any excess water then drains through the plant and back onto the reservoir.
+                        The electrical interface for the pod exists right above the reservoir.
+                        The capacitive sensor would be on the inside of the plant pot.
+                        The housing can be separated into two for easier access into the reservoir.
+                        A cable consisting of wires, and two 6-pin female JST conenctors ran betwwen a port of the brain and the port on the pod.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 id="V2">V2</h2>        
+                    <p>
+                        Both pots used for testing were not the same exact size.
+                        This makes the one size fits all idea of the project slightly tougher.
+                        More over, the slide out method for the brain's electronics did not aid in maintenance due to other added components being attached to the inside of the houseing.
+                        The housing components took many hours each and iterations could be days in between each other.
+                        <br><br>
+                        For the sake of progress, a more modular approach was adopted. 
+                        The brain and pod system did not change functionaly.
+                        All parts were designed and printed to fit onto 2020 aluminum extrusion.
+                        <img src="../imgs/automatic_plant_watering_system_brain_v2_close.jpg" alt="Brain V2" class="resized-img">
+                        Each extrusion upright had feet that bolted to the bottom.
+                        The brain had plates with space for the use of double sided tape and screws.
+                        The pod had plats that held the plant up, held the plant in place.
+                        Beneath the pods were clear tuperware containers. 
+                        This aided in seeing the water level and cleanliness.
+                        This also makes it easier to ensure a watertight reservoir was used.
+                        The male JST connectors were very annoying work with as they each had to be soldered onto 6 wires.
+                        This was repeated 8 times, twice for each pod.
+                        Instead, 6 pass through clip connectors were used when connecting the brain and pods.
+                        <br><br>
+                        All compnents were printed from abs since they were fully stocked in inventory.
+                        The pod pot holders were printed from TPU to allow them to strech to slightly different sized pots.
+                        <img src="../imgs/automatic_plant_watering_system_pod_v2.jpg" alt="Pod V2" class="resized-img">
+                        <br>
+                        <img src="../imgs/automatic_plant_watering_system_brain_v2.jpg" alt="V2" class="resized-img">
+                        The arduino was replaced for an Arduino R4 Wifi, which could connect to the internet.
+                        This allowed for interfacing and monitoring through a phone app.
+                    </p>
+                    <br>
+                    <h2 id="V3">CODE</h2>
+                    <p>
+                        The program connects an Arduino-compatible board to WiFi and retrieves accurate time using NTP.
+                        It uses scheduled time windows to decide when two plants (Fittonia and Aloe) should be watered.
+                        Each plant has its own soil moisture sensor and pump, along with a retry-based watering cycle.
+                        Once the moisture threshold is reached or the time limit is exceeded, watering stops and the cycle for that window is marked complete. 
+                    </p>
+                    <p>
+                        The code imports WiFi and NTP libraries to obtain the current time over the internet.
+                        A WiFiUDP object is created so the NTP client can communicate with the NTP server.
+                        An NTPClient is initialized to use the 0.us.pool.ntp.org server with an offset and 1-second update interval.
+                        Global variables store the time, moisture values, pump pins, and program state for each plant.
+                        Separate state variables track whether each plant’s watering is in progress, whether it already watered for the current window, and the last retry timestamp.
+                    </p>
+                    <h3>Pin Assignments and Moisture Sensors</h3>
+                    <p>
+                        Motor1 and Motor2 correspond to the pump control pins for Fittonia and Aloe.
+                        Sensor1 and Sensor2 are the analog moisture sensors for each plant.
+                        During setup, the motors are configured as outputs and default to HIGH, which means pumps start in the off state.
+                    </p>
+                    <h3>Main Structure</h3>
+                    <p>
+                        The loop() function calls wifiLoop() to update the time, then planterLoop() to read sensors and run watering logic.
+                        A one-second delay keeps the program readable and avoids excessive serial spam.
+                    </p>
+                    <h3>Wifi and Time Updates</h3>
+                    <p>
+                        In wifiSetup(), the code connects to a WiFi network and waits in a loop until the connection is successful.
+                        Once connected, the NTP client begins tracking time from the NTP server.
+                        In wifiLoop(), the NTP client retrieves the current time and stores it in a formatted HH:MM:SS string.
+                        The program extracts hour, minute, and second values, and also retrieves the day of the week.
+                    </p>
+                    <h3>Reading Moisture Values</h3>
+                    <p>
+                        planterLoop() reads both moisture sensors through analogRead().
+                        The raw values are printed to the serial monitor for debugging.
+                        After reading the sensors, the function calls waterScheduler() to decide whether watering should occur.
+                    </p>
+                    <img src="../imgs/data_from_arduino_IOT.jpg" alt="data from arduino IOT" class="resized-img">
+                    <h3>Timing-Based Watering Scheduler</h3>
+                    <p>
+                        waterScheduler() determines whether the current time falls within the designated watering window for each plant.
+                        Fittonia is watered on day 1 and day 4 between 20:00:00 and 20:05:00.
+                        Aloe is watered only on day 1 during this same five-minute window.
+                        If a watering window opens and the plant has not been watered yet, a watering cycle begins and a timestamp is recorded.
+                        If the window closes, the "watered this window" flag is reset for the next schedule.
+                    </p>
+                    <h3>Retry-Based Watering Logic</h3>
+                    <p>
+                        Each plant uses a retry interval of five seconds to avoid rapid, repeated watering attempts.
+                        If watering is in progress and enough time has passed since the last attempt, the program tries again.
+                        The code calls either fittoniaControl() or aloeControl() to determine whether the pump should run or stop.
+                        If the moisture level reaches the threshold or the cycle times out after sixty seconds, watering is considered complete.
+                        When watering completes, the program updates state flags and stops the pump.
+                    </p>
+                    <h3>Plant Control Functions<h3>
+                    <p>
+                        Each control function reads the associated moisture sensor.
+                        If the soil is still dry or if the allowed watering time has passed, the pump is turned off.
+                        If the soil is wet enough and the timeout has not been reached, the pump is turned on.
+                        The function returns a boolean that indicates whether watering should continue or not.
+                        Elapsed time is printed to the serial output for monitoring.
+                    </p>
+                    <h3>Time Window Checking Helper</h3>
+                    <p>
+                        withinTime() parses the minimum, current, and maximum time strings into numeric components.
+                        It returns true when the current time falls between the defined start and end times.
+                        Only hours and minutes are effectively used in the range comparison logic.
+                    </p>
+                    <h3>Summary</h3>
+                    <p>
+                        This system creates an automated, time-scheduled, moisture-responsive watering system for two plants.
+                        It reliably retrieves real-world time using NTP.
+                        It only waters during defined weekday and time windows.
+                        It attempts watering in controlled five-second intervals.
+                        It stops watering when moisture reaches a defined threshold or when a time limit is exceeded.
+                        It ensures each plant is watered at most once per watering window.
+                    </p>
+
+                    <svg width="940" height="820" xmlns="http://www.w3.org/2000/svg">
+
+                        <!-- Title -->
+                        <text x="210" y="35" font-size="24" font-family="Arial" font-weight="bold">
+                            Automated Plant Watering System - Architecture Diagram
+                        </text>
+
+                        <!-- Network and Time -->
+                        <rect x="50" y="70" width="350" height="90" fill="#e8f1ff" stroke="#3b6db3" stroke-width="2" rx="10"/>
+                        <text x="70" y="105" font-family="Arial" font-size="17" font-weight="bold">NETWORK AND TIME SUBSYSTEM</text>
+                        <text x="70" y="130" font-family="Arial" font-size="14">- WiFi.begin()</text>
+                        <text x="70" y="150" font-family="Arial" font-size="14">- NTPClient -> current time and weekday</text>
+
+                        <!-- Sensors -->
+                        <rect x="50" y="200" width="350" height="120" fill="#eefeea" stroke="#4fa74f" stroke-width="2" rx="10"/>
+                        <text x="70" y="235" font-family="Arial" font-size="17" font-weight="bold">MOISTURE SENSOR SUBSYSTEM</text>
+                        <text x="70" y="260" font-family="Arial" font-size="14">- Sensor1: Fittonia (A0)</text>
+                        <text x="70" y="280" font-family="Arial" font-size="14">- Sensor2: Aloe (A1)</text>
+                        <text x="70" y="300" font-family="Arial" font-size="14">- analogRead() -> moisture values</text>
+
+                        <!-- Connectors -->
+                        <line x1="225" y1="160" x2="225" y2="200" stroke="#ffffff" stroke-width="2"/>
+                        <line x1="225" y1="320" x2="225" y2="350" stroke="#ffffff" stroke-width="2"/>
+
+                        <!-- Scheduler -->
+                        <rect x="50" y="350" width="350" height="140" fill="#fff4e3" stroke="#d28b2e" stroke-width="2" rx="10"/>
+                        <text x="70" y="385" font-family="Arial" font-size="17" font-weight="bold">TIME WINDOW SCHEDULER</text>
+                        <text x="70" y="410" font-family="Arial" font-size="14">- Fittonia: Mon and Thu 20:00 to 20:05</text>
+                        <text x="70" y="430" font-family="Arial" font-size="14">- Aloe: Mon only 20:00 to 20:05</text>
+                        <text x="70" y="450" font-family="Arial" font-size="14">- Opens watering cycle when window starts</text>
+
+                        <!-- Down to controllers -->
+                        <line x1="225" y1="490" x2="225" y2="530" stroke="#ffffff" stroke-width="2"/>
+
+                        <!-- Control Subsystem -->
+                        <rect x="50" y="530" width="350" height="240" fill="#ffe7f0" stroke="#c2476a" stroke-width="2" rx="12"/>
+                        <text x="70" y="565" font-family="Arial" font-size="17" font-weight="bold">CONTROL SUBSYSTEM</text>
+                        <text x="70" y="595" font-family="Arial" font-size="14">- fittoniaControl()</text>
+                        <text x="70" y="615" font-family="Arial" font-size="14">- aloeControl()</text>
+                        <text x="70" y="640" font-family="Arial" font-size="14">- Retry interval: 5 seconds</text>
+                        <text x="70" y="660" font-family="Arial" font-size="14">- Safety timeout: 60 seconds</text>
+                        <text x="70" y="680" font-family="Arial" font-size="14">- State variables:</text>
+                        <text x="90" y="700" font-family="Arial" font-size="14">isXWateringInProgress</text>
+                        <text x="90" y="720" font-family="Arial" font-size="14">wateredThisWindow</text>
+                        <text x="90" y="740" font-family="Arial" font-size="14">startTime and elapsedTime</text>
+
+                        <!-- Right arrows -->
+                        <line x1="400" y1="280" x2="500" y2="280" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)"/>
+                        <line x1="400" y1="620" x2="500" y2="620" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Moisture Threshold -->
+                        <rect x="500" y="240" width="370" height="80" fill="#f3ffe6" stroke="#87c159" stroke-width="2" rx="10"/>
+                        <text x="520" y="275" font-family="Arial" font-size="17" font-weight="bold">MOISTURE THRESHOLD LOGIC</text>
+                        <text x="520" y="300" font-family="Arial" font-size="14">Compares sensorRead to threshold</text>
+
+                        <!-- Pumps -->
+                        <rect x="500" y="580" width="370" height="100" fill="#fff0f2" stroke="#ce5370" stroke-width="2" rx="10"/>
+                        <text x="520" y="615" font-family="Arial" font-size="17" font-weight="bold">PUMP ACTUATION</text>
+                        <text x="520" y="640" font-family="Arial" font-size="14">- Motor1: Fittonia pump</text>
+                        <text x="520" y="660" font-family="Arial" font-size="14">- Motor2: Aloe pump</text>
+
+                        <!-- Down arrow -->
+                        <line x1="685" y1="680" x2="685" y2="740" stroke="#ffffff" stroke-width="2" marker-end="url(#arrow)"/>
+
+                        <!-- Physical Pumps -->
+                        <rect x="520" y="740" width="330" height="60" fill="#ffe9d6" stroke="#c28340" stroke-width="2" rx="10"/>
+                        <text x="545" y="775" font-family="Arial" font-size="17">Physical Pumps and Tubing</text>
+
+                        <!-- Arrow marker -->
+                        <defs>
+                            <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+                                <path d="M0,0 L0,6 L9,3 z" fill="#ffffff"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </section>
+                <section class="section">
+                    <h2 id="FIN">FIN</h2>
+                    <p>
+                        This project was abandonded after the code was written.
+                        Before testing, the sensors were placed onto the pots.
+                        The overwelming feeling of the entire project feeling wrong after placing the sensors caused the project to come to a close.
+                    </P>
+                    <img src="../imgs/automatic_plant_watering_system.jpg" alt="fin" class="resized-img">
+                </section>
+            </section>
+        </div>
+    </body>
+</html>

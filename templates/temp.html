@@ -1,58 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ROS2 Robot & Controller</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="temp.css">
-</head>
-<body>
+    <head>
+        <title>Misael's Projects </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../templates/temp.css" />
+    </head>
 
-<div class="layout">
+    <body class="projects-page">
+        <div class="layout">
+            <nav class="sidebar">
+                <h2>Project Name</h2>
+                <p>Project Motto</p>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Main page</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../experiences.html">Experiences</a></li>
+                </ul>
+            </nav>
 
-  <!-- Sidebar -->
-  <nav class="sidebar">
-    <div class="sidebar-header">
-      <h1>Projects</h1>
-    </div>
+            <section class="project-content">
+                <section class="section">
+                    <p>
+                        Description of project
+                    </p>
+                    <p>
+                        Description of project #2
+                    </p>
+                </section>
 
-    <div class="sidebar-intro">
-      <p>Complementing my rolodex page: details, technologies, and images of this project.</p>
-    </div>
+                <section class="section">
+                    <h2>System Overview</h2>
+                    <ul>
+                        <li>System Component 1</li>
+                        <li>System Component 2</li>
+                        <li>System Component 3</li>
+                        <li>System Component 4</li>
+                        <li>System Component 5</li>
+                    </ul>
+                </section>
 
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="experiences.html">Experiences</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+                <nav id="table-of-contents">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#V1">V1</a></li>
+                        <li><a href="#V2">V2</a></li>
+                        <li><a href="#V3">V3</a></li>
+                        <li><a href="#V4">V4</a></li>
+                    </ul>
+                </nav>
 
-  <!-- Main content -->
-  <section class="project-content">
-    <h1>ROS2 Robot & Controller</h1>
+                <hr>
 
-    <p>This project involves building a ROS2-controlled robot using DC motors, Arduinos, and Raspberry Pis.</p>
+                <section class="section">
+                    <h2>Why?</h2>
+                    <p>
+                        Why did this project come to fruition? what problem is it trying to solve?
+                    </p>
+                    <hr>
 
-    <h2>Technologies Used</h2>
-    <ul>
-      <li>ROS2</li>
-      <li>Arduino</li>
-      <li>Raspberry Pi</li>
-      <li>DC Motors</li>
-    </ul>
+                    <h2 id="V1">V1</h2>
+                    <h3>System Component 1</h3>
+                    <p>
+                        info dump here
+                    </p>
 
-    <div class="project-images">
-      <div class="project-card">
-        <img src="imgs/ros2_robot.jpg" alt="ROS2 Robot">
-      </div>
-    </div>
+                    <h3>System Component 2</h2>
+                    <img src="../imgs/rando.jpg" alt="vv" class="resized-img">
+                    <p>
+                        info dump here
+                    </p>
+                    <img src="../imgs/rando.jpg" alt="vv" class="resized-img">
+                </section>
 
-    <a href="projects.html" class="view-btn">Back to Projects</a>
-  </section>
-
-</div>
-
-</body>
+                <section class="section">
+                    <h2 id="V2">V2</h2>        
+                    <p>
+                        info dump here
+                    </p>
+                    <ol>
+                        <li>item 1</li>
+                        <li>item 2</li>
+                        <li>item 3</li>
+                        <li>item 4</li>
+                        <li>item 5</li>
+                    </ol>
+                </section>
+            </section>
+        </div>
+    </body>
 </html>

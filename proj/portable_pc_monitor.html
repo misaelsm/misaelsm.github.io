@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Misael's Projects </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/individual_project_page.css" />
+    </head>
+
+    <body class="projects-page">
+        <div class="layout">
+            <nav class="sidebar">
+                <h2>Portable PC Monitor</h2>
+                <p>Increasing Accessibility in the Living Room</p>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Main page</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../experiences.html">Experiences</a></li>
+                </ul>
+            </nav>
+
+            <section class="project-content">
+                <section class="section">
+                    <p>
+                        A monitor that may be able to be used at any part of the living room, allowing entertainment in multiple locations.
+                    </p>
+                    <p>
+                        Description of project #2
+                    </p>
+                </section>
+
+                <nav id="table-of-contents">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                        <li><a href="#V1">V1</a></li>
+                        <li><a href="#V2">V2</a></li>
+                        <li><a href="#V3">V3</a></li>
+                    </ul>
+                </nav>
+
+                <hr>
+
+                <section class="section">
+                    <h2>Why?</h2>
+                    <p>
+                        A desktop PC is used as the main source of entertainment in a living room.
+                        The desktop is centralized in the living room.
+                        Two bean bag chairs are on the sides of the desktop.
+                        Ideally the PC should be viewed from anywhere in the living room.
+                        The empty space in the living room allows for alternative use cases that could come from social events or project assemblies.
+                    </p>
+                    <hr>
+
+                    <h2 id="V1">V1</h2>
+                    <p>
+                        Initially a 8 inch touchscreen was attached to the desktop with a 12ft HDMI and USB cable that supplies data and power.
+                        The screen could be dragged along to either of the two bean bag chairs or on to the floor.
+                        A webcam was attached to the screen via another USB cable for the sake of video calls.
+                        A small controller sized keyboard was connected to the desktop.
+                        It had a wireless connection with a long battery life.
+                    </p>
+                    <img src="../imgs/rando.jpg" alt="vv" class="resized-img">
+                </section>
+
+                <section class="section">
+                    <h2 id="V2">V2</h2>        
+                    <p>
+                        The second version of the monitor assembly was constructed due to V1 loosing HDMI connectivity constantly.
+                        This was mainly due to moving and bending the HDMI cable repeatedly.
+                        The internal wires inside the HDMI cable is not meant to withstand constant movement.
+                        A wireless system is sought out.
+                        The new system would have the following:
+                    </p>
+                    <ul>
+                        <li>10" Screen</li>
+                        <li>Raspberry Pi</li>
+                        <li>Milwaukee M18 battery</li>
+                        <li>Milwaukee M18 Charger</li>
+                        <li>3D Printed Enclosure</li>
+                    </ul>
+                    <p>
+                        The 10" screen was meant to directly interface with the Raspberry Pi 3 (what was available in inventory).
+                        The screen came with connectors and hardware for attachment purposes.
+                        After powering up the entire system, sunshine and moonlight onto the desktop and raspberry pi, respectively.
+                        This was so that the wireless keyboard dongle could be attached to the desktop and still be used when remotely connected.
+                        After connecting the two devices, it was noted that streaming services like Netflix or Disney+ could not be streamed due to Digital Rights Management (DRM).
+                        The raspberry pi was replaced with a HDMI transmitter and receiver.
+                        Netflix and Prime Video returned to normal but not Disney+.
+                        This is believed to be due to High-Bandwidth Digital Content Protection (HDCP).
+                    </p>
+                    <img src="../imgs/portable_pc_monitor.jpg" alt="V2" class="resized-img">
+
+                </section>
+
+                <section class="section">
+                    <h2 id="V3">V3</h2>
+                    <p>
+                        A wired connection between the desktop and monitor is needed once more to bypass the issues of V2.
+                        The central component in the center of the living room consisted of an aluminum extrusion frame.
+                        Inside the frame were logitech steering wheels and gas pedeals.
+                        The idea of the frame is to store gaming components and be able to have them mounted onto it when in use.
+                        Another frame above this is to contain the desktop, Xbox controllers, a projector, and the monitor.
+                        The two frames are stacked in between the two bean bag chairs.
+                        The desktop screen will be centered on the top frame.
+                        The screen is able to pivot in two joints to allow viewage of the screen from either bean bag chair.
+                    </p>
+                </section>
+            </section>
+        </div>
+    </body>
+</html>
