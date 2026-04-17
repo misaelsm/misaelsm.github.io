@@ -225,11 +225,37 @@ font-size: 1.2rem;
     margin-left: auto;
     margin-right: auto;
 }
+
+.resized-video {
+    max-width: 600px;    /* Set a maximum width for the video */
+    width: 100%;         /* Make the video responsive (full-width on small screens) */
+    height: auto;        /* Maintain aspect ratio */
+    border-radius: 6px;  /* Optional: Round the corners of the video */
+    display: block;      /* Ensure it's displayed as a block-level element */
+    margin-left: auto;   /* Center the video */
+    margin-right: auto;  /* Center the video */
+}
+
+.resized-video-portrait {
+    max-width: 200px;    /* Set a maximum width for the video */
+    width: 30%;         /* Make the video responsive (full-width on small screens) */
+    height: auto;        /* Maintain aspect ratio */
+    border-radius: 6px;  /* Optional: Round the corners of the video */
+    display: block;      /* Ensure it's displayed as a block-level element */
+    margin-left: auto;   /* Center the video */
+    margin-right: auto;  /* Center the video */
+}
+
 figure {
 text-align: center;
 }
 
 figure img {
+max-width: 100%;
+height: auto;
+}
+
+figure video {
 max-width: 100%;
 height: auto;
 }
